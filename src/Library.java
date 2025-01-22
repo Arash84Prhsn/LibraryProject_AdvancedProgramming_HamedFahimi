@@ -36,4 +36,36 @@ public class Library {
         this.employeesList = new ArrayList<>();
     }
 
+    public void addBook(Book book) {
+        this.booksList.add(book);
+    }
+
+    public boolean removeBook(Book book) {
+        return this.booksList.remove(book);
+    }
+
+    public void addMember(Member member) {
+        this.membersList.add(member);
+    }
+
+    public boolean removeMember(Member member) {
+        return this.membersList.remove(member);
+    }
+
+    public void addEmployee(Employee employee) {
+        this.employeesList.add(employee);
+    }
+
+    public boolean removeEmployee(Employee employee) {
+        return this.employeesList.remove(employee);
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+    public void addEmplyee(Employee employee) {
+        this.employeesList.add(employee);
+    }
+
 }

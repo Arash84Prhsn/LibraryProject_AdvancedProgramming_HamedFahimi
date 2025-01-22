@@ -20,25 +20,20 @@ public class Member {
     public ArrayList<Book> getBorrowedBooksList() {return this.borrowedBooks;}
 
     // Constructors:
-    public Member(String name, int membershipID, int phoneNumber, String signUpDate, boolean subscriptionStatus) {
+    public Member(String name, int membershipID, int phoneNumber, String signUpDate) {
         this.name = name;
         this.membershipID = membershipID;
         this.phoneNumber = phoneNumber;
         this.signUpDate = signUpDate;
-        this.subscriptionStatus = subscriptionStatus;
+        this.subscriptionStatus = true;
         this.isSpecialMember = false;
         this.borrowedBooks = new ArrayList<>();
     }
 
-    public Member (String name, int membershipID, int phoneNumber, String signUpDate, boolean subscriptionStatus, boolean isSpecialMember) {
+    public Member (String name, int membershipID, int phoneNumber, String signUpDate, boolean isSpecialMember) {
         
-        this.name = name;
-        this.membershipID = membershipID;
-        this.phoneNumber = phoneNumber;
-        this.signUpDate = signUpDate;
-        this.subscriptionStatus = subscriptionStatus;
+        this(name, membershipID, phoneNumber, signUpDate);
         this.isSpecialMember = isSpecialMember;
-        this.borrowedBooks = new ArrayList<>();
     }
 
     // Setter methods:
@@ -57,6 +52,14 @@ public class Member {
         } else {
             return this.borrowedBooks.size() < 6;
         }
+    }
+
+    public void deactiveSubscription() {
+        this.subscriptionStatus = false;
+    }
+
+    public void activeSubscription() {
+        this.subscriptionStatus = true;
     }
 
     public void borrowBook(Book book) {

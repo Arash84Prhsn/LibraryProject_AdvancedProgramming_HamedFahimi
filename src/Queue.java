@@ -35,7 +35,7 @@ public class Queue<T> {
 
     public void enqueue(T newElement) {
         
-        Node<T> newNode = new Node(newElement, null);
+        Node<T> newNode = new Node<>(newElement, null);
 
         if (isEmpty()) {
             
