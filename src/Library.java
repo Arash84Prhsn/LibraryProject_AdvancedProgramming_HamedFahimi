@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Libarary {
+public class Library {
     // Classs attributes:
     private String libararyName;
     private int libararyID;
@@ -18,7 +18,7 @@ public class Libarary {
     public ArrayList<Book> getBooksList() {return this.booksList;}
 
     // Constructor:
-    public Libarary(String libararyName, int libararyID, Manager manager) {
+    public Library(String libararyName, int libararyID, Manager manager) {
         this.libararyName = libararyName;
         this.libararyID = libararyID;
         this.manager = manager;
@@ -27,7 +27,7 @@ public class Libarary {
         this.employeesList = new ArrayList<>();
     }
 
-    public Libarary(String libraryName, int LibraryID) {
+    public Library(String libraryName, int LibraryID) {
         this.libararyName = libraryName;
         this.libararyID = LibraryID;
         this.manager = null;
