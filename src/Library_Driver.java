@@ -77,6 +77,7 @@ public class Library_Driver
                 switch (option) {
                     case 11:
                         System.out.println("Exiting the program...");
+                        
                         continueProgram = false;
                         break;
                     
@@ -193,7 +194,8 @@ public class Library_Driver
                         System.out.println("Please specify the member you would like to remove: ");
                         Member member3 = searchMember(library);
                         library.removeMember(member3);
-
+                        System.out.println("Member removed successfully.");
+                        break;
                     case 8:
                         ArrayList<Book> books = SearchBooks(library);
                         System.out.println("The books have been found: ");
@@ -245,7 +247,7 @@ public class Library_Driver
             }
         }
 
-        input.close();
+        
 
     }// End of main-------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------------
@@ -262,23 +264,23 @@ public class Library_Driver
             case 1:
                 System.out.println("Input the name of the book: ");
                 String name = input.nextLine();
-                input.close();
+                
                 return library.getBooksByName(name);
             
             case 2:
                 System.out.println("Input the author of the book: ");
                 String author = input.nextLine();
-                input.close();
+                
                 return library.getBooksByAuthor(author);
 
             case 3:
                 System.out.println("Input the category of the book: ");
                 String category = input.nextLine();
-                input.close();
+                
                 return library.getBooksByCategory(category);
             
             default:
-                input.close();
+                
                 throw new IllegalArgumentException("Invalid option. Please input a valid option.");
         }
 
@@ -300,25 +302,25 @@ public class Library_Driver
             case 1:
                 System.out.println("Input the name of the member: ");
                 String name = input.nextLine();
-                input.close();
+                
                 return library.getMemberByName(name);
             
             case 2:
                 System.out.println("Input the ID of the member: ");
                 int id = input.nextInt();
                 input.nextLine();
-                input.close();
+                
                 return library.getMemberByID(id);
 
             case 3:
                 System.out.println("Input the phone number of the member: ");
                 int phoneNumber = input.nextInt();
                 input.nextLine();
-                input.close();
+                
                 return library.getMemberByPhoneNumber(phoneNumber);
             
             default:
-                input.close();
+                
                 throw new IllegalArgumentException("Invalid option. Please input a valid option.");
         }
 
@@ -327,14 +329,15 @@ public class Library_Driver
 
     private static void manageMember(Library library) throws IllegalArgumentException, InputMismatchException{
 
-        Scanner input = new Scanner(System.in);
-
+        
         System.out.println("Pleas specify the member you would like to manage: ");
         Member member = searchMember(library);
-
+        
+        
         System.out.println("How would you like to manage the member?");
         System.out.println("1. Borrow a book \n2. Return a book \n3. Edit the member's info");  
         
+        Scanner input = new Scanner(System.in);
         int option = input.nextInt();
         input.nextLine();
 
@@ -427,7 +430,10 @@ public class Library_Driver
                         else member.makeNormalMember();
                         break;
 
-                    }
-                }
-    }
-}// End of Library_Driver class
+                    }//End inner switch
+                
+                }//End outer Switch
+    
+            }//End manage member method.
+
+}// End of Library_Driver class.
