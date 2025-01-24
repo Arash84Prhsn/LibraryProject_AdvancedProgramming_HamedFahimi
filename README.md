@@ -32,11 +32,32 @@ Whenever a member tries to borrow a book that has already been borrowed, they ar
 
 Data concerning each member can be edited post initialization of the account.
 
+## Manager
+
+
+## Employees
+
+
 ## The library
 
 The library has the following properties:
 
 `Name`, `ID`, `Manager`, `ListOfBooks`, `ListOfEmployees`, `ListOfMembers`
 
-The info concerning the library <b can not be /b> edited 
+The info concerning the library can not be edited post initialization.
+
+Same goes for the manager of the library.
+
+All the data concerning the library can be viewed at any time
+
+Members, Books and Employees can be added and removed.
+
+Members of the library can be accessed through either their name, membershipID or phoneNumber.
+
+Books that share the same name, category or author can be viewed.
+
+Manager cannot be changed.
+
+
+
 
