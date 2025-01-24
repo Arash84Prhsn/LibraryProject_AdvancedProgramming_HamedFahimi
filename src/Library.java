@@ -64,10 +64,6 @@ public class Library {
         this.manager = manager;
     }
 
-    public void addEmplyee(Employee employee) {
-        this.employeesList.add(employee);
-    }
-
     public Member getMemberByName(String name) {
         
         for (Member member : this.getMembersList())

@@ -54,11 +54,11 @@ public class Member {
         }
     }
 
-    public void deactiveSubscription() {
+    public void deactivateSubscription() {
         this.subscriptionStatus = false;
     }
 
-    public void activeSubscription() {
+    public void activateSubscription() {
         this.subscriptionStatus = true;
     }
 
