@@ -104,10 +104,25 @@ public class Member {
         return borrowedBooks;
     }
 
+    public String getReservedBooksString() {
+
+        String s = new String();
+
+        for (Book b : this.getBorrowedBooksList()) {
+
+            if (b.getReservers().contains(this))
+                s.concat(b.getName() + " | ");
+        }
+
+        return s;
+
+    }
+
     @Override
     public String toString() {
-        return String.format("Name: %s%nMembership ID: %d%nPhone number: %d%nSign up date: %s%nSubscription status: %b%nSpecial member: %b%nBorrowed books: %s%n", 
-                             this.name, this.membershipID, this.phoneNumber, this.signUpDate, this.subscriptionStatus, this.isSpecialMember, this.getBorrowedBooksString());
+        return String.format("Name: %s%nMembership ID: %d%nPhone number: %d%nSign up date: %s%nSubscription status: %b%nSpecial member: %b%nBorrowed books: %s%nReservedBooks: %s%n", 
+                             this.name, this.membershipID, this.phoneNumber, this.signUpDate, this.subscriptionStatus, this.isSpecialMember, this.getBorrowedBooksString()
+                             , this.getReservedBooksString());
     }
 
 }// End of Member class

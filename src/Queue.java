@@ -66,4 +66,31 @@ public class Queue<T> {
         for (T i : items)
             this.enqueue(i);
     }
+
+    public boolean contains(T item) {
+
+        Queue<T> queue = new Queue<>();
+
+        int n = this.getSize();
+
+        for (int i = 0; i < n; i++) {
+            
+            T t = this.dequeue();
+            queue.enqueue(t);
+            if (t == item) {
+
+                while (!queue.isEmpty()) 
+                    this.enqueue(queue.dequeue());
+                
+                return true;
+            }
+        }
+        
+        while (!queue.isEmpty()) {
+            this.enqueue(queue.dequeue());
+        }
+
+        return false;
+
+    }
 }
