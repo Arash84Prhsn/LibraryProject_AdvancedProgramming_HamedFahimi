@@ -6,7 +6,7 @@ a managing program.
 ## Books
 
 Books hold the following properties :
-`Name`, `ISBN`, `Author`, `Category, `Borrower`, `Reservers`
+`Name`, `ISBN`, `Author`, `Category`, `Borrower`, `Reservers`
 
 The properties above are self-explanatory, as for the reservers property :
 
