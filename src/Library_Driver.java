@@ -178,4 +178,12 @@ public class Library_Driver
 
     }// End of main
 
+
+    private static void manageMember() throws IllegalArgumentException, InputMismatchException{
+
+        System.out.println("How would you like to manage the member?");
+        System.out.println("1. Borrow a book \n2. Return a book \n3. Edit the member's info");
+        
+    }
+
 }// End of Library_Driver class
