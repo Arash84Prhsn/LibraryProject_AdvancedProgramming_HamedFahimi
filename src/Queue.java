@@ -25,6 +25,7 @@ public class Queue<T> {
 
     public Queue(){}
 
+    public int getSize() {return this.size;}
     public boolean isEmpty() {return size==0;}
 
     public T peek() {

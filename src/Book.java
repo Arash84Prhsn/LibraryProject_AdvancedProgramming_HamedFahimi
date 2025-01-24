@@ -49,10 +49,27 @@ public class Book {
     }
 
 
+    public String reserversString() {
+        String s = "";
+
+        Queue<Member> queue = new Queue<>();
+
+        for (int i = 0; i < this.getReservers().getSize(); i++) {
+            Member m = this.getReservers().dequeue();
+            queue.enqueue(m);
+            s += m.getName() + " | ";
+        }
+
+        this.reservers = queue;
+        return s;
+
+    }
+
     @Override
     public String toString() {
 
-        return String.format("Name: %s \nISBN: %d \nAuthor: %s \ncategory: %s\n", this.getName(), this.getIsbn(), this.getAuthor(), this.getCategory());
+        return String.format("Name: %s \nISBN: %d \nAuthor: %s \ncategory: %s\nPeople reserving this book:\n" + this.reserversString() + "\n"
+        , this.getName(), this.getIsbn(), this.getAuthor(), this.getCategory());
 
     }
 
