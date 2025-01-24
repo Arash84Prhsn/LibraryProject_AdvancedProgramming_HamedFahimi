@@ -17,7 +17,7 @@ public class Employee extends Manager {
 
     @Override
     public String toString() {
-        return String.format("Name: %s%nID: %d%nAge: %d%nSalary: %.2f%nRole: %s%nSection: %s",
+        return String.format("Name: %s%nID: %d%nAge: %d%nSalary: %.2f%nRole: %s%nSection: %s\n",
                              this.getName(), this.getID(), this.getAge(), this.getSalary(), this.getRole(), this.getSection());
     }
 

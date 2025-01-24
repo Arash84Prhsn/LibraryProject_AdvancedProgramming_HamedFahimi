@@ -68,4 +68,78 @@ public class Library {
         this.employeesList.add(employee);
     }
 
+    public Member getMemberByName(String name) {
+        
+        for (Member member : this.getMembersList())
+            if (member.getName().equals(name))
+                return member;
+
+        return null;
+    }
+
+    public Member getMemberByID(int id) {
+
+        for (Member member : this.getMembersList())
+            if (member.getMembershipID() == id)
+                return member;
+
+        return null;
+    }
+    
+    public Member getMemberByPhoneNumber(int id) {
+
+        for (Member member : this.getMembersList())
+            if (member.getPhoneNumber() == id)
+                return member;
+
+        return null;
+    }
+
+    
+    public ArrayList<Book> getBooksByAuthor(String author) {
+        
+        ArrayList<Book> books = new ArrayList<>();
+        
+        for (Book book : this.getBooksList())
+            if (book.getAuthor().equals(author))
+                books.add(book);
+
+        return books;
+    }
+
+    public ArrayList<Book> getBooksByCategory(String category) {
+        
+        ArrayList<Book> books = new ArrayList<>();
+        
+        for (Book book : this.getBooksList())
+            if (book.getCategory().equals(category))
+                books.add(book);
+
+        return books;
+    }   
+
+    public ArrayList<Book> getBooksByName(String name) {
+        
+        ArrayList<Book> books = new ArrayList<>();
+        
+        for (Book book : this.getBooksList())
+            if (book.getName().equals(name))
+                books.add(book);
+
+        return books;
+    }
+
+
+    @Override
+    public String toString() {
+        String line = "-------------------------------------------------------------------------------------------------";
+        System.out.println(line);
+        System.out.println(line);
+        System.out.println(line);
+        return String.format("Library Name: %s%nLibrary ID: %d%nManager: %s%nNumber of Employees: %d%nNumber of Members: %d%nNumber of Books: %d%nBooks: \n" + this.getBooksList() + line +
+                             "%nMembers :\n" + this.getMembersList() + line +"%nEmployees:\n" + this.getEmployeesList() + line,
+                             this.getName(), this.getID(), this.getManager().getName(), this.getEmployeesList().size(), this.getMembersList().size(), this.getBooksList().size(), line,line);
+    }
+    
+
 }

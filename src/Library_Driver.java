@@ -1,4 +1,5 @@
 // Arash Poorhasani 4021299123 AdvancedProgramming library Project.
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,8 +19,8 @@ public class Library_Driver
                 
                 System.out.println("Input the ID of your library: ");
                 int libraryID = input.nextInt();
-                if (libraryID < 0) throw new IllegalArgumentException("The ID of the library cannot be negative.");
                 input.nextLine();
+                if (libraryID < 0) throw new IllegalArgumentException("The ID of the library cannot be negative.");
                 
                 System.out.println("Input the name of the manager: ");
                 String managerName = input.nextLine();
@@ -49,6 +50,7 @@ public class Library_Driver
             }
             
             catch (InputMismatchException e) {
+                input.nextLine();
                 System.out.println("Invalid input. Please pay attention to certain input constraints.");
                 continue;
             }
@@ -65,15 +67,15 @@ public class Library_Driver
             try {
                 System.out.println("-------------------------------------------------------------------------------------------------");
                 System.out.println("You can manage your library using the following options: (Enter an integer matching the option)");
-                System.out.println("1. Add a book to the library \n2. Add a member to the library \n3. Add an employee to the library\n4. Remove an employee from the libaray" + 
-                                   "5. Manage a member \n6. Search for a member \n7. Remove a member\n8. Manage a book" + 
-                                   "9. Exit the program \nPlease input the number of the option you want to choose: ");
+                System.out.println("1. Add a book to the library 2. Add a member to the library 3. Add an employee to the library 4. Remove an employee from the libaray\n" + 
+                                   "5. Manage a member 6. Search for a member 7. Remove a member\n8. Search for Books 9. Remove a book\n" + 
+                                   "10. Show library 11. Exit the program \n\nPlease input the number of the option you want to choose: ");
                 
                 int option = input.nextInt();
                 input.nextLine();
 
                 switch (option) {
-                    case 9:
+                    case 11:
                         System.out.println("Exiting the program...");
                         continueProgram = false;
                         break;
@@ -81,12 +83,15 @@ public class Library_Driver
                     case 1:
                         System.out.println("Input the name of the book: ");
                         String bookName = input.nextLine();
+                        
                         System.out.println("Input the ISBN of the book: (Integer only) ");
                         int bookISBN = input.nextInt();
                         input.nextLine();
                         if (bookISBN < 0) throw new IllegalArgumentException("The ISBN of the book cannot be negative.");
+                        
                         System.out.println("Input the author of the book: ");
                         String bookAuthor = input.nextLine();
+                        
                         System.out.println("Input the category of the book: ");
                         String bookCategory = input.nextLine();
 
@@ -154,36 +159,275 @@ public class Library_Driver
                         System.out.println("The employee has been added to the library successfully.");
                         break;
 
+
+                    case 4:
+                        System.out.println("Input the name of the employee you would like to remove: ");
+                        String employeeName2 = input.nextLine();
+                        Employee employee2 = null;
+                        for (Employee e : library.getEmployeesList()) {
+                            if (e.getName().equals(employeeName2)) {
+                                employee2 = e;
+                                break;
+                            }
+                        }
+
+                        if (employee2 == null) {
+                            System.out.println("The employee you are looking for does work in the library.");
+                            return;
+                        }
+
+                        library.removeEmployee(employee2);
+                        System.out.println("The employee has been removed from the library successfully.");
+                        break;
+                    
+                    case 5:
+                        manageMember(library);
+                        break;
+                    
+                    case 6:
+                        Member member2 = searchMember(library);
+                        System.out.println("The member has been found: \n" + member2);
+                        break;
+
+                    case 7:
+                        System.out.println("Please specify the member you would like to remove: ");
+                        Member member3 = searchMember(library);
+                        library.removeMember(member3);
+
+                    case 8:
+                        ArrayList<Book> books = SearchBooks(library);
+                        System.out.println("The books have been found: ");
+                        System.out.println(books);
+                        break;
+                        
+                    case 9:
+                        System.out.println("Input the name of the book you would like to remove: ");
+                        String bookName2 = input.nextLine();
+                        Book book2 = null;
+                        for (Book b : library.getBooksList()) {
+                            if (b.getName().equals(bookName2)) {
+                                book2 = b;
+                                break;
+                            }
+                        }
+
+                        if (book2 == null) {
+                            System.out.println("The book you are looking for does not exist in the library.");
+                            return;
+                        }
+
+                        library.getBooksList().remove(book2);
+                        System.out.println("The book has been removed from the library successfully.");
+                        break;
+                        
+                    case 10:
+                        System.out.println(library);
+                        break;
+                
                     default:
                         throw new IllegalArgumentException("Invalid option. Please input a valid option.");
+                    
+                    
                 }
-
                 
-
 
             }
 
             catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please pay attention to certain input constraints.");
+                input.nextLine();
+                System.out.println("Invalid input. Please pay attention to certain input constraints.\n");
                 continue;
             }
 
             catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                System.out.println(e.getMessage()+"\n");
                 continue;
             }
         }
 
         input.close();
 
-    }// End of main
+    }// End of main-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------
+    private static ArrayList<Book> SearchBooks(Library library) throws IllegalArgumentException, InputMismatchException {
 
-
-    private static void manageMember() throws IllegalArgumentException, InputMismatchException{
-
-        System.out.println("How would you like to manage the member?");
-        System.out.println("1. Borrow a book \n2. Return a book \n3. Edit the member's info");
+        Scanner input = new Scanner(System.in);
         
+        System.out.println("How would you like to search for the books?");
+        System.out.println("1. Search by name 2. Search by author 3. Search by category");
+        int option = input.nextInt();
+        input.nextLine();
+
+        switch (option) {
+            case 1:
+                System.out.println("Input the name of the book: ");
+                String name = input.nextLine();
+                input.close();
+                return library.getBooksByName(name);
+            
+            case 2:
+                System.out.println("Input the author of the book: ");
+                String author = input.nextLine();
+                input.close();
+                return library.getBooksByAuthor(author);
+
+            case 3:
+                System.out.println("Input the category of the book: ");
+                String category = input.nextLine();
+                input.close();
+                return library.getBooksByCategory(category);
+            
+            default:
+                input.close();
+                throw new IllegalArgumentException("Invalid option. Please input a valid option.");
+        }
+
+
+
     }
 
+    private static Member searchMember(Library library) throws IllegalArgumentException, InputMismatchException{
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("How would you like to search for the member?");
+        System.out.println("1. Search by name \n2. Search by ID \n3. Search by phone number");
+
+        int option = input.nextInt();
+        input.nextLine();
+
+        switch (option) {
+            case 1:
+                System.out.println("Input the name of the member: ");
+                String name = input.nextLine();
+                input.close();
+                return library.getMemberByName(name);
+            
+            case 2:
+                System.out.println("Input the ID of the member: ");
+                int id = input.nextInt();
+                input.nextLine();
+                input.close();
+                return library.getMemberByID(id);
+
+            case 3:
+                System.out.println("Input the phone number of the member: ");
+                int phoneNumber = input.nextInt();
+                input.nextLine();
+                input.close();
+                return library.getMemberByPhoneNumber(phoneNumber);
+            
+            default:
+                input.close();
+                throw new IllegalArgumentException("Invalid option. Please input a valid option.");
+        }
+
+    }
+
+
+    private static void manageMember(Library library) throws IllegalArgumentException, InputMismatchException{
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Pleas specify the member you would like to manage: ");
+        Member member = searchMember(library);
+
+        System.out.println("How would you like to manage the member?");
+        System.out.println("1. Borrow a book \n2. Return a book \n3. Edit the member's info");  
+        
+        int option = input.nextInt();
+        input.nextLine();
+
+        switch (option) {
+            
+            case 1:
+                System.out.println("Input the name of the book you would like to borrow: ");
+                String bookName = input.nextLine();
+                Book book = null;
+                for (Book b : library.getBooksList()) {
+                    if (b.getName().equals(bookName)) {
+                        book = b;
+                        break;
+                    }
+                }
+
+                if (book == null) {
+                    System.out.println("The book you are looking for does not exist in the library.");
+                    return;
+                }
+
+                member.borrowBook(book);
+                break;
+
+            case 2:
+                System.out.println("Input the name of the book you would like to return: ");
+                String bookName2 = input.nextLine();
+                Book book2 = null;
+                for (Book b : member.getBorrowedBooksList()) {
+                    if (b.getName().equals(bookName2)) {
+                        book2 = b;
+                        break;
+                    }
+                }
+
+                if (book2 == null) {
+                    System.out.println("The book you are looking for is not borrowed by the member.");
+                    return;
+                }
+
+                member.returnBook(book2);
+                break;
+
+            case 3:
+                
+                System.out.println("What would you like to edit?");
+                System.out.println("1. Name \n2. Membership ID \n3. Phone number \n4. Subscription status \n5. Special member status");
+                int editOption = input.nextInt();
+                input.nextLine();
+
+                switch (editOption) {
+                    case 1:
+                        System.out.println("Input the new name of the member: ");
+                        String name = input.nextLine();
+                        member.setName(name);
+                        break;
+
+                    case 2:
+                        System.out.println("Input the new membership ID of the member: ");
+                        int id = input.nextInt();
+                        input.nextLine();
+                        member.setMembershipID(id);
+                        break;
+
+                    case 3:
+                        System.out.println("Input the new phone number of the member: ");
+                        int phoneNumber = input.nextInt();
+                        input.nextLine();
+                        member.setPhoneNumber(phoneNumber);
+                        break;
+
+
+                    case 4:
+                        System.out.println("Input the new subscription status of the member: input true/false for active/inactive subscription");
+                        boolean subscriptionStatus = input.nextBoolean();
+                        input.nextLine();
+                        member.setSubscriptionStatus(subscriptionStatus);
+
+                    case 5:
+                        System.out.println("Do you want to make the member a special member? (true/false)");
+                        boolean isSpecialMember = input.nextBoolean();
+                        input.nextLine();
+                        if (isSpecialMember)  {
+                            if (member.isSpecialMember()) {
+                                System.out.println("The member is already a special member.");
+                                return;
+                            }
+                            member.makeSpecialMember();
+                        }
+                        else member.makeNormalMember();
+                        break;
+
+                    }
+                }
+    }
 }// End of Library_Driver class

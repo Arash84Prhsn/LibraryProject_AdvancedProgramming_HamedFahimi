@@ -65,6 +65,7 @@ public class Member {
     public void borrowBook(Book book) {
         
         if (this.canBorrow() && !book.IsBorrowed()) {
+            book.updateBorrower(this);
             this.borrowedBooks.add(book);
             return;
         }
@@ -91,7 +92,7 @@ public class Member {
             System.out.println("Member <" + this.getName() + "> has not borrowed the <" + book.getName() + "> book.");
     }
 
-    public String getBorrowedBooks() {
+    public String getBorrowedBooksString() {
         if (this.borrowedBooks.size() == 0) {
             return "Member <" + this.getName() + "> has not borrowed any books.";
         }
@@ -106,7 +107,7 @@ public class Member {
     @Override
     public String toString() {
         return String.format("Name: %s%nMembership ID: %d%nPhone number: %d%nSign up date: %s%nSubscription status: %b%nSpecial member: %b%nBorrowed books: %s%n", 
-                             this.name, this.membershipID, this.phoneNumber, this.signUpDate, this.subscriptionStatus, this.isSpecialMember, this.getBorrowedBooks());
+                             this.name, this.membershipID, this.phoneNumber, this.signUpDate, this.subscriptionStatus, this.isSpecialMember, this.getBorrowedBooksString());
     }
 
 }// End of Member class

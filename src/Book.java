@@ -49,6 +49,11 @@ public class Book {
     }
 
 
+    @Override
+    public String toString() {
 
+        return String.format("Name: %s \nISBN: %d \nAuthor: %s \ncategory: %s\n", this.getName(), this.getIsbn(), this.getAuthor(), this.getCategory());
+
+    }
 
 }
