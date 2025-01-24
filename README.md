@@ -1,7 +1,7 @@
 # Library Management Project
 
-This project is meant to simulate a program that would process all aspects of managing a library but since this project isn't robust enough nor does it have a GUI, it just simulates such
-a managing program.
+This project is meant to be a program that would process all aspects of managing a library but since this project isn't robust enough nor does it have a GUI, it just simulates such
+a managing program and is incomplete.
 
 ## Books
 
@@ -37,4 +37,6 @@ Data concerning each member can be edited post initialization of the account.
 The library has the following properties:
 
 `Name`, `ID`, `Manager`, `ListOfBooks`, `ListOfEmployees`, `ListOfMembers`
+
+The info concerning the library <b can not be /b> edited 
 
