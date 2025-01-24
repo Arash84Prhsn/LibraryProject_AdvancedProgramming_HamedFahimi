@@ -7,4 +7,4 @@ a managing program.
 
 The library has the following properties:
 
-`Name` , `ID` , `ListOfBooks` , `ListOfEmployees`
+`Name` , `ID` , `Manager` , `ListOfBooks` , `ListOfEmployees` , `ListOfMembers`

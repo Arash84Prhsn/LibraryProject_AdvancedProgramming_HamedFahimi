@@ -133,12 +133,15 @@ public class Library {
     @Override
     public String toString() {
         String line = "-------------------------------------------------------------------------------------------------";
-        System.out.println(line);
-        System.out.println(line);
-        System.out.println(line);
-        return String.format("Library Name: %s%nLibrary ID: %d%nManager: %s%nNumber of Employees: %d%nNumber of Members: %d%nNumber of Books: %d%nBooks: \n" + this.getBooksList() + line +
-                             "%nMembers :\n" + this.getMembersList() + line +"%nEmployees:\n" + this.getEmployeesList() + line,
-                             this.getName(), this.getID(), this.getManager().getName(), this.getEmployeesList().size(), this.getMembersList().size(), this.getBooksList().size(), line,line);
+        return String.format("%s%n%s%n%s%nLibrary Name: %s%nLibrary ID: %d%nManager: %s%nNumber of Employees: %d%nNumber of Members: %d%nNumber of Books: %d%nBooks: \n" + this.getBooksList() +"\n"+ line +
+                             "%nMembers :\n" + this.getMembersList() + "\n" + line +"%nEmployees:\n" + this.getEmployeesList() + "\n" + "%s%n%s"
+                             ,
+                             "-------------------------------------------------------------------------------------------------",
+                             "----------------------------------<LIBRARY INFORMATION>------------------------------------------",
+                             "-------------------------------------------------------------------------------------------------",
+                             this.getName(), this.getID(), this.getManager().getName(), this.getEmployeesList().size(), this.getMembersList().size(), this.getBooksList().size(),
+                             "-------------------------------------------------------------------------------------------------",
+                             "-------------------------------<END OF LIBRARY INFORMATION>--------------------------------------");
     }
     
 

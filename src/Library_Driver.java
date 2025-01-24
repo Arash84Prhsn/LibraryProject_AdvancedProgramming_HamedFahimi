@@ -174,7 +174,7 @@ public class Library_Driver
 
                         if (employee2 == null) {
                             System.out.println("The employee you are looking for does work in the library.");
-                            return;
+                            break;
                         }
 
                         library.removeEmployee(employee2);
