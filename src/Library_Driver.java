@@ -182,7 +182,7 @@ public class Library_Driver
                         break;
                     
                     case 5:
-                        manageMember(library);
+                        manageMember(library);//Static method defined after main.
                         break;
                     
                     case 6:
@@ -227,13 +227,9 @@ public class Library_Driver
                         break;
                 
                     default:
-                        throw new IllegalArgumentException("Invalid option. Please input a valid option.");
-                    
-                    
+                        throw new IllegalArgumentException("Invalid option. Please input a valid option.");   
                 }
-                
-
-            }
+            }//End try block
 
             catch (InputMismatchException e) {
                 input.nextLine();
