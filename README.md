@@ -5,4 +5,6 @@ a managing program.
 
 ## The library
 
-The library 
+The library has the following properties:
+
+`Name` , `ID` , `ListOfBooks` , `ListOfEmployees`
